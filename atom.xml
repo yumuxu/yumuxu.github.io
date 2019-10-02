@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://yumuxu.github.io/</id>
     <title>Yumuxu</title>
-    <updated>2019-10-02T10:24:12.808Z</updated>
+    <updated>2019-10-02T12:57:19.935Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://yumuxu.github.io/"/>
     <link rel="self" href="https://yumuxu.github.io//atom.xml"/>
@@ -11,15 +11,15 @@
     <icon>https://yumuxu.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, Yumuxu</rights>
     <entry>
-        <title type="html"><![CDATA[开始]]></title>
-        <id>https://yumuxu.github.io//post/kai-shi</id>
-        <link href="https://yumuxu.github.io//post/kai-shi">
+        <title type="html"><![CDATA[About]]></title>
+        <id>https://yumuxu.github.io//post/about</id>
+        <link href="https://yumuxu.github.io//post/about">
         </link>
-        <updated>2019-10-02T10:22:18.000Z</updated>
-        <summary type="html"><![CDATA[<p>hello word😎🐹</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>hello word😎🐹</p>
-<!-- more -->
+        <updated>2019-10-02T12:55:10.000Z</updated>
+        <content type="html"><![CDATA[<p>岁月你别催<br>
+1.流水帐<br>
+2.技术记录<br>
+3.练习</p>
 ]]></content>
     </entry>
 </feed>
