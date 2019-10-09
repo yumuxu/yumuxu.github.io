@@ -5,7 +5,7 @@
     
 <meta charset="utf-8" >
 
-<title>pypi-镜像使用帮助 | Yumuxu</title>
+<title>Windows&amp;Linux virtualenv&amp;virtualenvwrapper 安装使用 | Yumuxu</title>
 <meta name="description" content="Always!">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -86,40 +86,43 @@
       <div class="content-container">
         <div class="post-detail">
           
-          <h2 class="post-title">pypi-镜像使用帮助</h2>
+          <h2 class="post-title">Windows&amp;Linux virtualenv&amp;virtualenvwrapper 安装使用</h2>
           <div class="post-info post-detail-info">
             <span><i class="icon-calendar-outline"></i> 2019-10-09</span>
             
-              <span>
-                <i class="icon-pricetags-outline"></i>
-                
-                  <a href="https://yumuxu.github.io//tag/v7GMo3JYn">
-                    Python
-                    
-                  </a>
-                
-              </span>
-            
           </div>
           <div class="post-content">
-            <p>临时使用</p>
-<pre><code>pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package
+            <p>在Windows和Linux环境下安装<code>virtualenv</code>和<code>virtualenvwrapper</code>的命令一样</p>
+<pre><code>pip install virtualenv
+pip install virtualenvwrapper-win       #如果是window，virtualenvwrapper-win
 </code></pre>
-<p>设为默认</p>
-<pre><code>pip install pip -U
-pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U
-pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+<hr>
+<p>Windows要使用<code>virtualwrapper</code>是要配置环境变量<br>
+<code>WORK_HOME</code>，这是一个全部存放virtualenv目录的目录，例如D:/source/env<br>
+然后可以使用virtualwrapper了，相关命令如下</p>
+<blockquote>
+<p>创建基本环境：mkvirtualenv [环境名]<br>
+删除环境：rmvirtualenv [环境名]<br>
+激活环境：workon [环境名]<br>
+退出环境：deactivate<br>
+列出所有环境：workon 或者 lsvirtualenv -b</p>
+</blockquote>
+<hr>
+<p>Linux要需要进行配置,才能创建虚拟环境，使命的使用同Windows</p>
+<pre><code>$ export WORKON_HOME=~/Envs
+$ mkdir -p $WORKON_HOME
+$ source /usr/local/bin/virtualenvwrapper.sh
+$ mkvirtualenv env1
 </code></pre>
-<p><a href="https://mirror.tuna.tsinghua.edu.cn/help/pypi/">https://mirror.tuna.tsinghua.edu.cn/help/pypi/</a></p>
 
           </div>
         </div>
 
         
           <div class="next-post">
-            <a class="purple-link" href="https://yumuxu.github.io//post/show-debian-version">
+            <a class="purple-link" href="https://yumuxu.github.io//post/windows-7-python3-7-install-mysqlclient">
               <h3 class="post-title">
-                下一篇：查看debian的版本号
+                下一篇：Windows-7-Python3-7-安装-mysqlclient
               </h3>
             </a>
           </div>

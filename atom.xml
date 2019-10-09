@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://yumuxu.github.io/</id>
     <title>Yumuxu</title>
-    <updated>2019-10-09T15:19:12.049Z</updated>
+    <updated>2019-10-09T16:05:36.133Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://yumuxu.github.io/"/>
     <link rel="self" href="https://yumuxu.github.io//atom.xml"/>
@@ -10,6 +10,36 @@
     <logo>https://yumuxu.github.io//images/avatar.png</logo>
     <icon>https://yumuxu.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, Yumuxu</rights>
+    <entry>
+        <title type="html"><![CDATA[Windows&Linux virtualenv&virtualenvwrapper 安装使用]]></title>
+        <id>https://yumuxu.github.io//post/windowsandlinux-virtualenvandvirtualenvwrapper-an-zhuang-shi-yong</id>
+        <link href="https://yumuxu.github.io//post/windowsandlinux-virtualenvandvirtualenvwrapper-an-zhuang-shi-yong">
+        </link>
+        <updated>2019-10-09T15:53:29.000Z</updated>
+        <content type="html"><![CDATA[<p>在Windows和Linux环境下安装<code>virtualenv</code>和<code>virtualenvwrapper</code>的命令一样</p>
+<pre><code>pip install virtualenv
+pip install virtualenvwrapper-win       #如果是window，virtualenvwrapper-win
+</code></pre>
+<hr>
+<p>Windows要使用<code>virtualwrapper</code>是要配置环境变量<br>
+<code>WORK_HOME</code>，这是一个全部存放virtualenv目录的目录，例如D:/source/env<br>
+然后可以使用virtualwrapper了，相关命令如下</p>
+<blockquote>
+<p>创建基本环境：mkvirtualenv [环境名]<br>
+删除环境：rmvirtualenv [环境名]<br>
+激活环境：workon [环境名]<br>
+退出环境：deactivate<br>
+列出所有环境：workon 或者 lsvirtualenv -b</p>
+</blockquote>
+<hr>
+<p>Linux要需要进行配置,才能创建虚拟环境，使命的使用同Windows</p>
+<pre><code>$ export WORKON_HOME=~/Envs
+$ mkdir -p $WORKON_HOME
+$ source /usr/local/bin/virtualenvwrapper.sh
+$ mkvirtualenv env1
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Windows-7-Python3-7-安装-mysqlclient]]></title>
         <id>https://yumuxu.github.io//post/windows-7-python3-7-install-mysqlclient</id>
