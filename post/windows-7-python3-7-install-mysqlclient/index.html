@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>About | Yumuxu</title>
+<title>Windows-7-Python3-7-安装-mysqlclient | Yumuxu</title>
 <meta name="description" content="温故而知新" />
 <link rel="shortcut icon" href="https://yumuxu.github.io//favicon.ico?v=1570632883615">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -73,24 +73,65 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              About
+              Windows-7-Python3-7-安装-mysqlclient
             </h2>
             <div class="post-info">
               <span>
-                2019-10-02
+                2019-10-09
               </span>
               <span>
-                1 min read
+                2 min read
               </span>
+              
+                <a href="https://yumuxu.github.io//tag/v7GMo3JYn" class="post-tag">
+                  # Python
+                </a>
               
             </div>
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>岁月你别催<br>
-1.流水帐<br>
-2.技术记录<br>
-3.练习</p>
+                <ol>
+<li>网速较慢，设置使用清华大学开源软件镜像站，参考<a href="https://www.jianshu.com/p/d5b2b3bd5a3e">https://www.jianshu.com/p/d5b2b3bd5a3e</a></li>
+</ol>
+<pre><code>pip3 install mysqlclient
+</code></pre>
+<ol start="2">
+<li>提示需要安装VC++<br>
+为什么会出现这样的错误<br>
+Windows Python needs Visual C++ libraries installed via the SDK to build code, such as via <code>setuptools.extension.Extension</code> or <code>numpy.distutils.core.Extension</code>. For example, building <a href="https://www.scivision.dev/tags/f2py"><code>f2py</code></a> modules in Windows with Python requires Visual C++ SDK as installed above. On Linux and Mac, the C++ libraries are installed with the compiler.</li>
+</ol>
+<pre><code>error: Microsoft Visual C++ 14.0 is required. Get it with &quot;Microsoft Visual C++ Build Tools&quot;: https://visualstudio.microsoft.com/downloads/
+</code></pre>
+<ol start="3">
+<li>查找对应的资源<br>
+<a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#mysqlclient">https://www.lfd.uci.edu/~gohlke/pythonlibs/#mysqlclient</a><br>
+其中cp27对应python2.7  win32表示window32位，win64表示windows64位系统。64位的不行安装32位的。</li>
+</ol>
+<pre><code>pip3 install mysqlclient-1.4.4-cp37-cp37m-win32.whl
+Looking in indexes: https://pypi.tuna.tsinghua.edu.cn/simple
+Processing f:\sydownload\mysqlclient-1.4.4-cp37-cp37m-win32.whl
+Installing collected packages: mysqlclient
+Successfully installed mysqlclient-1.4.4
+</code></pre>
+<ol start="4">
+<li>测试使用mysqlclinet</li>
+</ol>
+<pre><code class="language-python">Python 3.7.2 (tags/v3.7.2:9a3ffc0492, Dec 23 2018, 22:20:52) [MSC v.1916 32 bit
+(Intel)] on win32
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt; import MySQLdb
+&gt;&gt;&gt; conn = MySQLdb.connect(host='localhost',port=3306,user='root',passwd='root',db='xxxx')
+&gt;&gt;&gt; cur = conn.cursor()
+&gt;&gt;&gt; cur.execute('select * from xxxxxxx;')
+13
+
+&gt;&gt;&gt; cur.fetchall()
+((2, '1BB1D9F3E1498E5CCBE899B451DE3548', 1551436800, 1553857200, 0, 0, '2357303'))...
+</code></pre>
+<p>参考：<br>
+<a href="https://www.scivision.dev/python-windows-visual-c-14-required/">https://www.scivision.dev/python-windows-visual-c-14-required/</a><br>
+<a href="http://swiftlet.net/archives/2987">http://swiftlet.net/archives/2987</a></p>
 
               </div>
               <div class="toc-container">
@@ -100,6 +141,15 @@
           </article>
         </div>
 
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://yumuxu.github.io//post/pypi-use-tsinghua-Mirroring">
+              <h3 class="post-title">
+                pypi-镜像使用帮助
+              </h3>
+            </a>
+          </div>
         
 
         

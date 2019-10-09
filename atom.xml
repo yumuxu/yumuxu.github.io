@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://yumuxu.github.io/</id>
     <title>Yumuxu</title>
-    <updated>2019-10-09T14:47:24.717Z</updated>
+    <updated>2019-10-09T14:54:47.134Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://yumuxu.github.io/"/>
     <link rel="self" href="https://yumuxu.github.io//atom.xml"/>
@@ -10,6 +10,138 @@
     <logo>https://yumuxu.github.io//images/avatar.png</logo>
     <icon>https://yumuxu.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, Yumuxu</rights>
+    <entry>
+        <title type="html"><![CDATA[Windows-7-Python3-7-安装-mysqlclient]]></title>
+        <id>https://yumuxu.github.io//post/windows-7-python3-7-install-mysqlclient</id>
+        <link href="https://yumuxu.github.io//post/windows-7-python3-7-install-mysqlclient">
+        </link>
+        <updated>2019-10-09T14:53:35.000Z</updated>
+        <content type="html"><![CDATA[<ol>
+<li>网速较慢，设置使用清华大学开源软件镜像站，参考<a href="https://www.jianshu.com/p/d5b2b3bd5a3e">https://www.jianshu.com/p/d5b2b3bd5a3e</a></li>
+</ol>
+<pre><code>pip3 install mysqlclient
+</code></pre>
+<ol start="2">
+<li>提示需要安装VC++<br>
+为什么会出现这样的错误<br>
+Windows Python needs Visual C++ libraries installed via the SDK to build code, such as via <code>setuptools.extension.Extension</code> or <code>numpy.distutils.core.Extension</code>. For example, building <a href="https://www.scivision.dev/tags/f2py"><code>f2py</code></a> modules in Windows with Python requires Visual C++ SDK as installed above. On Linux and Mac, the C++ libraries are installed with the compiler.</li>
+</ol>
+<pre><code>error: Microsoft Visual C++ 14.0 is required. Get it with &quot;Microsoft Visual C++ Build Tools&quot;: https://visualstudio.microsoft.com/downloads/
+</code></pre>
+<ol start="3">
+<li>查找对应的资源<br>
+<a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#mysqlclient">https://www.lfd.uci.edu/~gohlke/pythonlibs/#mysqlclient</a><br>
+其中cp27对应python2.7  win32表示window32位，win64表示windows64位系统。64位的不行安装32位的。</li>
+</ol>
+<pre><code>pip3 install mysqlclient-1.4.4-cp37-cp37m-win32.whl
+Looking in indexes: https://pypi.tuna.tsinghua.edu.cn/simple
+Processing f:\sydownload\mysqlclient-1.4.4-cp37-cp37m-win32.whl
+Installing collected packages: mysqlclient
+Successfully installed mysqlclient-1.4.4
+</code></pre>
+<ol start="4">
+<li>测试使用mysqlclinet</li>
+</ol>
+<pre><code class="language-python">Python 3.7.2 (tags/v3.7.2:9a3ffc0492, Dec 23 2018, 22:20:52) [MSC v.1916 32 bit
+(Intel)] on win32
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt; import MySQLdb
+&gt;&gt;&gt; conn = MySQLdb.connect(host='localhost',port=3306,user='root',passwd='root',db='xxxx')
+&gt;&gt;&gt; cur = conn.cursor()
+&gt;&gt;&gt; cur.execute('select * from xxxxxxx;')
+13
+
+&gt;&gt;&gt; cur.fetchall()
+((2, '1BB1D9F3E1498E5CCBE899B451DE3548', 1551436800, 1553857200, 0, 0, '2357303'))...
+</code></pre>
+<p>参考：<br>
+<a href="https://www.scivision.dev/python-windows-visual-c-14-required/">https://www.scivision.dev/python-windows-visual-c-14-required/</a><br>
+<a href="http://swiftlet.net/archives/2987">http://swiftlet.net/archives/2987</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[pypi-镜像使用帮助]]></title>
+        <id>https://yumuxu.github.io//post/pypi-use-tsinghua-Mirroring</id>
+        <link href="https://yumuxu.github.io//post/pypi-use-tsinghua-Mirroring">
+        </link>
+        <updated>2019-10-09T14:52:07.000Z</updated>
+        <content type="html"><![CDATA[<p>临时使用</p>
+<pre><code>pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package
+</code></pre>
+<p>设为默认</p>
+<pre><code>pip install pip -U
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+</code></pre>
+<p><a href="https://mirror.tuna.tsinghua.edu.cn/help/pypi/">https://mirror.tuna.tsinghua.edu.cn/help/pypi/</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[查看debian的版本号]]></title>
+        <id>https://yumuxu.github.io//post/show-debian-version</id>
+        <link href="https://yumuxu.github.io//post/show-debian-version">
+        </link>
+        <updated>2019-10-09T14:51:12.000Z</updated>
+        <content type="html"><![CDATA[<p>cat /etc/debian_version</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Linux-挂载windows共享盘]]></title>
+        <id>https://yumuxu.github.io//post/linux-gua-zai-windows-gong-xiang-pan</id>
+        <link href="https://yumuxu.github.io//post/linux-gua-zai-windows-gong-xiang-pan">
+        </link>
+        <updated>2019-10-09T14:49:59.000Z</updated>
+        <content type="html"><![CDATA[<ol>
+<li>确保windwos下共享盘已经开启，并且可以通过用户名密码访问</li>
+<li>使用命令 <code>apt-get install cifs-utils</code> 安装cifs协议</li>
+<li>使用命令 <code>mkdir /mnt/win7</code> 创建挂载目录</li>
+<li>使用命令 <code>mount -t cifs -o username=xxxx,password=xxxx //xxx.xx.xx.xx/e$ /mnt/win7</code> 进行挂载</li>
+<li>进入目录 /mnt/win7 查看是否挂载成功</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Linux-挂载windows共享盘]]></title>
+        <id>https://yumuxu.github.io//post/linux-mount-windows-share</id>
+        <link href="https://yumuxu.github.io//post/linux-mount-windows-share">
+        </link>
+        <updated>2019-10-09T14:49:59.000Z</updated>
+        <content type="html"><![CDATA[<ol>
+<li>确保windwos下共享盘已经开启，并且可以通过用户名密码访问</li>
+<li>使用命令 <code>apt-get install cifs-utils</code> 安装cifs协议</li>
+<li>使用命令 <code>mkdir /mnt/win7</code> 创建挂载目录</li>
+<li>使用命令 <code>mount -t cifs -o username=xxxx,password=xxxx //xxx.xx.xx.xx/e$ /mnt/win7</code> 进行挂载</li>
+<li>进入目录 /mnt/win7 查看是否挂载成功</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Linux-多版本Python-pip-for-Python3]]></title>
+        <id>https://yumuxu.github.io//post/linux-duo-ban-ben-python-pip-for-python3</id>
+        <link href="https://yumuxu.github.io//post/linux-duo-ban-ben-python-pip-for-python3">
+        </link>
+        <updated>2019-10-09T14:49:19.000Z</updated>
+        <content type="html"><![CDATA[<ol>
+<li>使用命令下载脚本 <code>curl -O https://bootstrap.pypa.io/get-pip.py</code></li>
+<li>使用python3运行脚本 <code>python3 get-pip.py</code></li>
+<li>安装完成之后就<code>/usr/local/bin</code>下就会有pip3</li>
+<li>创建软连接到 <code>/usr/bin</code> 就可以在Terminal下正常使用<code>ln -s /usr/local/bin/pip3 /usr/bin/pip3</code></li>
+<li>参考<a href="http://stackoverflow.com/questions/11268501/how-to-use-pip-with-python-3-x-alongside-python-2-x">How to use pip with Python 3.x alongside Python 2.x</a></li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Linux-Set-Date.md]]></title>
+        <id>https://yumuxu.github.io//post/linux-set-datemd</id>
+        <link href="https://yumuxu.github.io//post/linux-set-datemd">
+        </link>
+        <updated>2019-10-09T14:47:44.000Z</updated>
+        <content type="html"><![CDATA[<ol>
+<li><code>date -s &quot;2016-02-06 00:00:00&quot;</code></li>
+<li><code>hwclock --systohc</code></li>
+</ol>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[About]]></title>
         <id>https://yumuxu.github.io//post/about</id>
