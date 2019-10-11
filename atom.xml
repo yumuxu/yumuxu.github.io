@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://yumuxu.github.io/</id>
     <title>Yumuxu</title>
-    <updated>2019-10-09T16:09:22.489Z</updated>
+    <updated>2019-10-11T15:30:13.662Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://yumuxu.github.io/"/>
     <link rel="self" href="https://yumuxu.github.io//atom.xml"/>
@@ -10,6 +10,68 @@
     <logo>https://yumuxu.github.io//images/avatar.png</logo>
     <icon>https://yumuxu.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, Yumuxu</rights>
+    <entry>
+        <title type="html"><![CDATA[Django 学习笔记 Day00]]></title>
+        <id>https://yumuxu.github.io//post/django-xue-xi-bi-ji-day00</id>
+        <link href="https://yumuxu.github.io//post/django-xue-xi-bi-ji-day00">
+        </link>
+        <updated>2019-10-11T03:45:20.000Z</updated>
+        <content type="html"><![CDATA[<ol>
+<li>相关命令</li>
+</ol>
+<pre><code>$ python -m django --version
+$ django-admin startproject mysite
+$ python manage.py runserver        #切换到有manage.py的目录
+$ python manage.py startapp polls 
+$ python manage.py migrate
+$ python manage.py makemigrations polls
+$ python manage.py sqlmigrate polls 0001
+$ python manage.py check
+</code></pre>
+<ol start="2">
+<li>
+<p>INSTALL_APPS</p>
+<ol>
+<li>
+<p><code>mysite/settings.py</code><strong>INSTALL_APPS</strong>，包括了会在你项目中启用的所有Django应用。<br>
+默认包括Django的自带应用</p>
+<blockquote>
+<p>django.contrib.admin -- 管理员站点， 你很快就会使用它<br>
+django.contrib.auth -- 认证授权系统。<br>
+django.contrib.contenttypes -- 内容类型框架。<br>
+django.contrib.sessions -- 会话框架。<br>
+django.contrib.messages -- 消息框架。<br>
+django.contrib.staticfiles -- 管理静态文件的框架。</p>
+</blockquote>
+</li>
+<li>
+<p>添加自己的应用到<strong>INSTALL_APPS</strong>,<br>
+因为<code>PollConfig</code>类写在文件<code>polls/apps.py</code>中，所以他的点式路径是<code>polls.apps/PollsConfig</code>。</p>
+<pre><code>INSTALLED_APPS = [
+    'polls.apps.PollsConfig',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    ]
+</code></pre>
+</li>
+</ol>
+</li>
+<li>
+<p>通过运行 <code>makemigrations</code> 命令 生成迁移文件。使用<code>sqlmigrate</code>命令接收一个迁移的名称生成对应的SQL。数据库迁移被分解成生成和应用两个命令是为了让你能够在代码控制系统上提交迁移数据库并使其能在多个应用里使用。</p>
+<ol>
+<li>输出的内容和使用的SQL有关系</li>
+<li>数据库的名称是由应用名(polls)和模型明的小写形式(question和choice)连接而来的(如果需要，可以自定义此行为)</li>
+<li>主键(IDs)会被自动创建。(当然，你也可以自定义)</li>
+<li>默认的，Django会在外键字段名后面追加字符串&quot;_id&quot;</li>
+</ol>
+</li>
+</ol>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Windows&Linux virtualenv&virtualenvwrapper 安装使用]]></title>
         <id>https://yumuxu.github.io//post/windowsandlinux-virtualenvandvirtualenvwrapper-install</id>

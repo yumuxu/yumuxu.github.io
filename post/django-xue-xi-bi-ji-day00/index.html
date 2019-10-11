@@ -5,7 +5,7 @@
     
 <meta charset="utf-8" >
 
-<title>Windows-7-Python3-7-安装-mysqlclient | Yumuxu</title>
+<title>Django 学习笔记 Day00 | Yumuxu</title>
 <meta name="description" content="Always!">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -86,72 +86,75 @@
       <div class="content-container">
         <div class="post-detail">
           
-          <h2 class="post-title">Windows-7-Python3-7-安装-mysqlclient</h2>
+          <h2 class="post-title">Django 学习笔记 Day00</h2>
           <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2019-10-09</span>
-            
-              <span>
-                <i class="icon-pricetags-outline"></i>
-                
-                  <a href="https://yumuxu.github.io//tag/v7GMo3JYn">
-                    Python
-                    
-                  </a>
-                
-              </span>
+            <span><i class="icon-calendar-outline"></i> 2019-10-11</span>
             
           </div>
           <div class="post-content">
             <ol>
-<li>网速较慢，设置使用清华大学开源软件镜像站，参考<a href="https://www.jianshu.com/p/d5b2b3bd5a3e">https://www.jianshu.com/p/d5b2b3bd5a3e</a></li>
+<li>相关命令</li>
 </ol>
-<pre><code>pip3 install mysqlclient
+<pre><code>$ python -m django --version
+$ django-admin startproject mysite
+$ python manage.py runserver        #切换到有manage.py的目录
+$ python manage.py startapp polls 
+$ python manage.py migrate
+$ python manage.py makemigrations polls
+$ python manage.py sqlmigrate polls 0001
+$ python manage.py check
 </code></pre>
 <ol start="2">
-<li>提示需要安装VC++<br>
-为什么会出现这样的错误<br>
-Windows Python needs Visual C++ libraries installed via the SDK to build code, such as via <code>setuptools.extension.Extension</code> or <code>numpy.distutils.core.Extension</code>. For example, building <a href="https://www.scivision.dev/tags/f2py"><code>f2py</code></a> modules in Windows with Python requires Visual C++ SDK as installed above. On Linux and Mac, the C++ libraries are installed with the compiler.</li>
-</ol>
-<pre><code>error: Microsoft Visual C++ 14.0 is required. Get it with &quot;Microsoft Visual C++ Build Tools&quot;: https://visualstudio.microsoft.com/downloads/
+<li>
+<p>INSTALL_APPS</p>
+<ol>
+<li>
+<p><code>mysite/settings.py</code><strong>INSTALL_APPS</strong>，包括了会在你项目中启用的所有Django应用。<br>
+默认包括Django的自带应用</p>
+<blockquote>
+<p>django.contrib.admin -- 管理员站点， 你很快就会使用它<br>
+django.contrib.auth -- 认证授权系统。<br>
+django.contrib.contenttypes -- 内容类型框架。<br>
+django.contrib.sessions -- 会话框架。<br>
+django.contrib.messages -- 消息框架。<br>
+django.contrib.staticfiles -- 管理静态文件的框架。</p>
+</blockquote>
+</li>
+<li>
+<p>添加自己的应用到<strong>INSTALL_APPS</strong>,<br>
+因为<code>PollConfig</code>类写在文件<code>polls/apps.py</code>中，所以他的点式路径是<code>polls.apps/PollsConfig</code>。</p>
+<pre><code>INSTALLED_APPS = [
+    'polls.apps.PollsConfig',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    ]
 </code></pre>
-<ol start="3">
-<li>查找对应的资源<br>
-<a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#mysqlclient">https://www.lfd.uci.edu/~gohlke/pythonlibs/#mysqlclient</a><br>
-其中cp27对应python2.7  win32表示window32位，win64表示windows64位系统。64位的不行安装32位的。</li>
+</li>
 </ol>
-<pre><code>pip3 install mysqlclient-1.4.4-cp37-cp37m-win32.whl
-Looking in indexes: https://pypi.tuna.tsinghua.edu.cn/simple
-Processing f:\sydownload\mysqlclient-1.4.4-cp37-cp37m-win32.whl
-Installing collected packages: mysqlclient
-Successfully installed mysqlclient-1.4.4
-</code></pre>
-<ol start="4">
-<li>测试使用mysqlclinet</li>
+</li>
+<li>
+<p>通过运行 <code>makemigrations</code> 命令 生成迁移文件。使用<code>sqlmigrate</code>命令接收一个迁移的名称生成对应的SQL。数据库迁移被分解成生成和应用两个命令是为了让你能够在代码控制系统上提交迁移数据库并使其能在多个应用里使用。</p>
+<ol>
+<li>输出的内容和使用的SQL有关系</li>
+<li>数据库的名称是由应用名(polls)和模型明的小写形式(question和choice)连接而来的(如果需要，可以自定义此行为)</li>
+<li>主键(IDs)会被自动创建。(当然，你也可以自定义)</li>
+<li>默认的，Django会在外键字段名后面追加字符串&quot;_id&quot;</li>
 </ol>
-<pre><code class="language-python">Python 3.7.2 (tags/v3.7.2:9a3ffc0492, Dec 23 2018, 22:20:52) [MSC v.1916 32 bit
-(Intel)] on win32
-Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
-&gt;&gt;&gt; import MySQLdb
-&gt;&gt;&gt; conn = MySQLdb.connect(host='localhost',port=3306,user='root',passwd='root',db='xxxx')
-&gt;&gt;&gt; cur = conn.cursor()
-&gt;&gt;&gt; cur.execute('select * from xxxxxxx;')
-13
-
-&gt;&gt;&gt; cur.fetchall()
-((2, '1BB1D9F3E1498E5CCBE899B451DE3548', 1551436800, 1553857200, 0, 0, '2357303'))...
-</code></pre>
-<p>参考：<br>
-<a href="https://www.scivision.dev/python-windows-visual-c-14-required/">https://www.scivision.dev/python-windows-visual-c-14-required/</a><br>
-<a href="http://swiftlet.net/archives/2987">http://swiftlet.net/archives/2987</a></p>
+</li>
+</ol>
 
           </div>
         </div>
 
         
           <div class="next-post">
-            <a class="purple-link" href="https://yumuxu.github.io//post/pypi-use-tsinghua-Mirroring">
+            <a class="purple-link" href="https://yumuxu.github.io//post/windowsandlinux-virtualenvandvirtualenvwrapper-install">
               <h3 class="post-title">
-                下一篇：pypi-镜像使用帮助
+                下一篇：Windows&amp;Linux virtualenv&amp;virtualenvwrapper 安装使用
               </h3>
             </a>
           </div>
