@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://yumuxu.github.io/</id>
     <title>Yumuxu</title>
-    <updated>2019-10-11T15:39:41.615Z</updated>
+    <updated>2019-10-13T06:54:54.045Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://yumuxu.github.io/"/>
     <link rel="self" href="https://yumuxu.github.io//atom.xml"/>
@@ -10,6 +10,56 @@
     <logo>https://yumuxu.github.io//images/avatar.png</logo>
     <icon>https://yumuxu.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, Yumuxu</rights>
+    <entry>
+        <title type="html"><![CDATA[Django 学习笔记 Day01]]></title>
+        <id>https://yumuxu.github.io//post/django-xue-xi-bi-ji-day01</id>
+        <link href="https://yumuxu.github.io//post/django-xue-xi-bi-ji-day01">
+        </link>
+        <updated>2019-10-13T05:20:57.000Z</updated>
+        <content type="html"><![CDATA[<ol>
+<li>配置选项
+<ol>
+<li><code>ROOT_URLCONF</code></li>
+<li><code>TEMPLATES</code>描述了Django如何载入和渲染模板，<code>APP_DIR</code>设置成了True。这一选项将会让DjangoTmeplates在每个<code>INSTALLED_APPS</code>文件夹寻找“templates&quot;子目录。</li>
+</ol>
+</li>
+<li>URL的捕获<br>
+question_id=34 由 &lt;int:question_id&gt; 匹配生成使用尖括号“捕获”这部分URL，且以关键字参数的形式发给视图函数。<code>:question_id</code>部分定义了将被用于区分匹配模式的变量名，<code>int:</code>则是一个转换器决定了应该以什么变量类型匹配这部分URL路径。</li>
+<li>每个视图必须要做的两件事
+<ol>
+<li>返回一个<code>HttpResponse</code></li>
+<li>或者抛出有一个异常，比如<code>Http404</code></li>
+</ol>
+</li>
+<li>快捷函数:<code>render()</code><br>
+request 对象作为第一个参数，模板名作为第二个参数，字典对象作为可选的第三个参数</li>
+<li>404错误<br>
+快捷函数:<code>get_object_or_404() get_list_or_404()</code><pre><code>def detail(request, question_id):
+ # try:
+ #     question = Question.objects.get(pk=question_id)
+ # except Question.DoesNotExist:
+ #    raise Http404(&quot;Question does not exist&quot;)
+     question = get_object_or_404(Question, question_id)
+     return render(request, 'polls/detail.html', {'question': question})
+</code></pre>
+为什么不直接抛出DoesNotExist?因为这样做会增加模型层和视图层的耦合性。</li>
+<li>去除模板中的硬编码URL<br>
+<code>&lt;li&gt;&lt;a href=&quot;/polls/{{ question.id }}/&quot;&gt;{{ question.question_text }}&lt;/a&gt;&lt;/li&gt;</code><br>
+替换成<br>
+<code>&lt;li&gt;&lt;a href=&quot;{% url 'detail' question.id %}&quot;&gt;{{ question.question_text }}&lt;/a&gt;&lt;/li&gt;</code><br>
+<code>url()</code>函数中通过name 参数为 polls.urls模块的URL定义的name<br>
+<strong>为URL名称添加命名空间</strong><br>
+在URLconf中添加命名空间<pre><code>...
+app_name = 'polls'
+urlpatterns = [
+...
+</code></pre>
+修改为指向具有命名空间的详细试图:<pre><code>&lt;li&gt;&lt;a href=&quot;{% url 'polls:detail' question.id %}&quot;&gt;{{ question.question_text }}&lt;/a&gt;&lt;/li&gt;
+</code></pre>
+</li>
+</ol>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Django 学习笔记 Day00]]></title>
         <id>https://yumuxu.github.io//post/django-xue-xi-bi-ji-day00</id>
@@ -233,18 +283,6 @@ pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 <li><code>date -s &quot;2016-02-06 00:00:00&quot;</code></li>
 <li><code>hwclock --systohc</code></li>
 </ol>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[About]]></title>
-        <id>https://yumuxu.github.io//post/about</id>
-        <link href="https://yumuxu.github.io//post/about">
-        </link>
-        <updated>2019-10-02T12:55:10.000Z</updated>
-        <content type="html"><![CDATA[<p>岁月你别催<br>
-1.流水帐<br>
-2.技术记录<br>
-3.练习</p>
 ]]></content>
     </entry>
 </feed>

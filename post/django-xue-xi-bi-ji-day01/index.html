@@ -5,7 +5,7 @@
     
 <meta charset="utf-8" >
 
-<title>Linux-挂载windows共享盘 | Yumuxu</title>
+<title>Django 学习笔记 Day01 | Yumuxu</title>
 <meta name="description" content="Always!">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -86,18 +86,53 @@
       <div class="content-container">
         <div class="post-detail">
           
-          <h2 class="post-title">Linux-挂载windows共享盘</h2>
+          <h2 class="post-title">Django 学习笔记 Day01</h2>
           <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2019-10-09</span>
+            <span><i class="icon-calendar-outline"></i> 2019-10-13</span>
             
           </div>
           <div class="post-content">
             <ol>
-<li>确保windwos下共享盘已经开启，并且可以通过用户名密码访问</li>
-<li>使用命令 <code>apt-get install cifs-utils</code> 安装cifs协议</li>
-<li>使用命令 <code>mkdir /mnt/win7</code> 创建挂载目录</li>
-<li>使用命令 <code>mount -t cifs -o username=xxxx,password=xxxx //xxx.xx.xx.xx/e$ /mnt/win7</code> 进行挂载</li>
-<li>进入目录 /mnt/win7 查看是否挂载成功</li>
+<li>配置选项
+<ol>
+<li><code>ROOT_URLCONF</code></li>
+<li><code>TEMPLATES</code>描述了Django如何载入和渲染模板，<code>APP_DIR</code>设置成了True。这一选项将会让DjangoTmeplates在每个<code>INSTALLED_APPS</code>文件夹寻找“templates&quot;子目录。</li>
+</ol>
+</li>
+<li>URL的捕获<br>
+question_id=34 由 &lt;int:question_id&gt; 匹配生成使用尖括号“捕获”这部分URL，且以关键字参数的形式发给视图函数。<code>:question_id</code>部分定义了将被用于区分匹配模式的变量名，<code>int:</code>则是一个转换器决定了应该以什么变量类型匹配这部分URL路径。</li>
+<li>每个视图必须要做的两件事
+<ol>
+<li>返回一个<code>HttpResponse</code></li>
+<li>或者抛出有一个异常，比如<code>Http404</code></li>
+</ol>
+</li>
+<li>快捷函数:<code>render()</code><br>
+request 对象作为第一个参数，模板名作为第二个参数，字典对象作为可选的第三个参数</li>
+<li>404错误<br>
+快捷函数:<code>get_object_or_404() get_list_or_404()</code><pre><code>def detail(request, question_id):
+ # try:
+ #     question = Question.objects.get(pk=question_id)
+ # except Question.DoesNotExist:
+ #    raise Http404(&quot;Question does not exist&quot;)
+     question = get_object_or_404(Question, question_id)
+     return render(request, 'polls/detail.html', {'question': question})
+</code></pre>
+为什么不直接抛出DoesNotExist?因为这样做会增加模型层和视图层的耦合性。</li>
+<li>去除模板中的硬编码URL<br>
+<code>&lt;li&gt;&lt;a href=&quot;/polls/{{ question.id }}/&quot;&gt;{{ question.question_text }}&lt;/a&gt;&lt;/li&gt;</code><br>
+替换成<br>
+<code>&lt;li&gt;&lt;a href=&quot;{% url 'detail' question.id %}&quot;&gt;{{ question.question_text }}&lt;/a&gt;&lt;/li&gt;</code><br>
+<code>url()</code>函数中通过name 参数为 polls.urls模块的URL定义的name<br>
+<strong>为URL名称添加命名空间</strong><br>
+在URLconf中添加命名空间<pre><code>...
+app_name = 'polls'
+urlpatterns = [
+...
+</code></pre>
+修改为指向具有命名空间的详细试图:<pre><code>&lt;li&gt;&lt;a href=&quot;{% url 'polls:detail' question.id %}&quot;&gt;{{ question.question_text }}&lt;/a&gt;&lt;/li&gt;
+</code></pre>
+</li>
 </ol>
 
           </div>
@@ -105,9 +140,9 @@
 
         
           <div class="next-post">
-            <a class="purple-link" href="https://yumuxu.github.io//post/linux-mount-windows-share">
+            <a class="purple-link" href="https://yumuxu.github.io//post/django-xue-xi-bi-ji-day00">
               <h3 class="post-title">
-                下一篇：Linux-挂载windows共享盘
+                下一篇：Django 学习笔记 Day00
               </h3>
             </a>
           </div>
