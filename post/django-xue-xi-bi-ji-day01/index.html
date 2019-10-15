@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://yumuxu.github.io//favicon.ico?v=1571148595168">
+<link rel="shortcut icon" href="https://yumuxu.github.io//favicon.ico?v=1571148716781">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://yumuxu.github.io//styles/main.css">
 
@@ -36,7 +36,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://yumuxu.github.io/">
-        <img src="https://yumuxu.github.io//images/avatar.png?v=1571148595168" class="site-logo">
+        <img src="https://yumuxu.github.io//images/avatar.png?v=1571148716781" class="site-logo">
         <h1 class="site-title">Yumuxu</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -137,6 +137,10 @@ request 对象作为第一个参数，模板名作为第二个参数，字典对
      return render(request, 'polls/detail.html', {'question': question})
 </code></pre>
 <p>为什么不直接抛出DoesNotExist?因为这样做会增加模型层和视图层的耦合性。</p>
+</li>
+<li>
+<p>去除模板中的硬编码URL<br>
+<code>a href=&quot;/polls/{{ question.id }}/{{ question.question_text }}</code></p>
 </li>
 </ol>
 
