@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://yumuxu.github.io//favicon.ico?v=1571148472393">
+<link rel="shortcut icon" href="https://yumuxu.github.io//favicon.ico?v=1571148539736">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://yumuxu.github.io//styles/main.css">
 
@@ -36,7 +36,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://yumuxu.github.io/">
-        <img src="https://yumuxu.github.io//images/avatar.png?v=1571148472393" class="site-logo">
+        <img src="https://yumuxu.github.io//images/avatar.png?v=1571148539736" class="site-logo">
         <h1 class="site-title">Yumuxu</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -116,32 +116,6 @@ question_id=34 由 int:question_id 匹配生成使用尖括号“捕获”这部
 <li>返回一个<code>HttpResponse</code></li>
 <li>或者抛出有一个异常，比如<code>Http404</code></li>
 </ol>
-</li>
-<li>快捷函数:<code>render()</code><br>
-request 对象作为第一个参数，模板名作为第二个参数，字典对象作为可选的第三个参数</li>
-<li>404错误<br>
-快捷函数:<code>get_object_or_404() get_list_or_404()</code><pre><code>def detail(request, question_id):
- # try:
- #     question = Question.objects.get(pk=question_id)
- # except Question.DoesNotExist:
- #    raise Http404(&quot;Question does not exist&quot;)
-     question = get_object_or_404(Question, question_id)
-     return render(request, 'polls/detail.html', {'question': question})
-</code></pre>
-为什么不直接抛出DoesNotExist?因为这样做会增加模型层和视图层的耦合性。</li>
-<li>去除模板中的硬编码URL<br>
-<code>a href=&quot;/polls/{{ question.id }}/{{ question.question_text }}</code><br>
-替换成<br>
-<code>a href=&quot;{% url 'detail' question.id %}&quot;{{ question.question_text }}</code><br>
-<code>url()</code>函数中通过name 参数为 polls.urls模块的URL定义的name<br>
-<strong>为URL名称添加命名空间</strong><br>
-在URLconf中添加命名空间<pre><code>...
-app_name = 'polls'
-urlpatterns = [
-...
-</code></pre>
-修改为指向具有命名空间的详细试图:<pre><code>a href=&quot;{% url 'polls:detail' question.id %}&quot;{{ question.question_text }}
-</code></pre>
 </li>
 </ol>
 
