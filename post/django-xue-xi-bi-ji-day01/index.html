@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://yumuxu.github.io//favicon.ico?v=1571146423834">
+<link rel="shortcut icon" href="https://yumuxu.github.io//favicon.ico?v=1571146660706">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://yumuxu.github.io//styles/main.css">
 
@@ -36,7 +36,7 @@
   <div class="site-header">
     <div class="left">
       <a href="https://yumuxu.github.io/">
-        <img class="avatar" src="https://yumuxu.github.io//images/avatar.png?v=1571146423834" alt="" width="32px" height="32px">
+        <img class="avatar" src="https://yumuxu.github.io//images/avatar.png?v=1571146660706" alt="" width="32px" height="32px">
       </a>
       <a href="https://yumuxu.github.io/">
         <h1 class="site-title">Yumuxu</h1>
@@ -120,9 +120,9 @@ request 对象作为第一个参数，模板名作为第二个参数，字典对
 </code></pre>
 为什么不直接抛出DoesNotExist?因为这样做会增加模型层和视图层的耦合性。</li>
 <li>去除模板中的硬编码URL<br>
-<code>&lt;li&gt;&lt;a href=&quot;/polls/{{ question.id }}/&quot;&gt;{{ question.question_text }}&lt;/a&gt;&lt;/li&gt;</code><br>
+<code>a href=&quot;/polls/{{ question.id }}/&quot;&gt;{{ question.question_text }}</code><br>
 替换成<br>
-<code>&lt;li&gt;&lt;a href=&quot;{% url 'detail' question.id %}&quot;&gt;{{ question.question_text }}&lt;/a&gt;&lt;/li&gt;</code><br>
+<code>a href=&quot;{% url 'detail' question.id %}&quot;&gt;{{ question.question_text }}</code><br>
 <code>url()</code>函数中通过name 参数为 polls.urls模块的URL定义的name<br>
 <strong>为URL名称添加命名空间</strong><br>
 在URLconf中添加命名空间<pre><code>...
@@ -130,7 +130,7 @@ app_name = 'polls'
 urlpatterns = [
 ...
 </code></pre>
-修改为指向具有命名空间的详细试图:<pre><code>&lt;li&gt;&lt;a href=&quot;{% url 'polls:detail' question.id %}&quot;&gt;{{ question.question_text }}&lt;/a&gt;&lt;/li&gt;
+修改为指向具有命名空间的详细试图:<pre><code>a href=&quot;{% url 'polls:detail' question.id %}&quot;&gt;{{ question.question_text }}
 </code></pre>
 </li>
 </ol>
