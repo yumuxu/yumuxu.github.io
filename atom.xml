@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://yumuxu.github.io/</id>
     <title>Yumuxu</title>
-    <updated>2019-10-15T14:15:16.123Z</updated>
+    <updated>2019-10-16T13:22:15.892Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://yumuxu.github.io/"/>
     <link rel="self" href="https://yumuxu.github.io//atom.xml"/>
@@ -21,7 +21,7 @@
 <p>配置选项</p>
 <ol>
 <li><code>ROOT_URLCONF</code></li>
-<li><code>TEMPLATES</code>描述了Django如何载入和渲染模板，<code>APP_DIR</code>设置成了True。这一选项将会让DjangoTmeplates在每个<code>INSTALLED_APPS</code>文件夹寻找&quot;templates&quot;子目录。</li>
+<li><code>TEMPLATES</code>描述了Django如何载入和渲染模板，<code>APP_DIR</code>设置成了True。这一选项将会让DjangoTmeplates在每个 <code>INSTALLED_APPS</code> 文件夹寻找&quot;templates&quot;子目录。</li>
 </ol>
 </li>
 <li>
@@ -54,7 +54,19 @@ request 对象作为第一个参数，模板名作为第二个参数，字典对
 </li>
 <li>
 <p>去除模板中的硬编码URL<br>
-<code>a href=&quot;/polls/ question.id /question.question_text</code></p>
+<span v-pre> <code>&lt;a href=&quot;/polls/{{ question.id }}/{{ question.question_text }}&lt;/a&gt;</code></span><br>
+替换成<br>
+<span v-pre><code>&lt;a href=&quot;{% url 'detail' question.id %}&quot;&gt;{{ question.question_text }}&lt;/a&gt;</code></span><br>
+<code>url()</code>函数中通过name 参数为 polls.urls模块的URL定义的name<br>
+<strong>为URL名称添加命名空间</strong><br>
+在URLconf中添加命名空间</p>
+<pre><code>...
+app_name = 'polls'
+urlpatterns = [
+...
+</code></pre>
+<p>修改为指向具有命名空间的详细试图:<br>
+<span v-pre><code>&lt;a href=&quot;{% url 'polls:detail' question.id %}&quot;&gt;{{ question.question_text }}&lt;/a&gt;</code></span></p>
 </li>
 </ol>
 ]]></content>
