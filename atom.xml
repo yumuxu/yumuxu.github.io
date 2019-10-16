@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://yumuxu.github.io/</id>
     <title>Yumuxu</title>
-    <updated>2019-10-16T13:22:15.892Z</updated>
+    <updated>2019-10-16T14:32:47.619Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://yumuxu.github.io/"/>
     <link rel="self" href="https://yumuxu.github.io//atom.xml"/>
@@ -146,7 +146,7 @@ pip install virtualenvwrapper-win       #如果是window，virtualenvwrapper-win
 </code></pre>
 <hr>
 <p>Windows要使用<code>virtualwrapper</code>是要配置环境变量<br>
-<code>WORK_HOME</code>，这是一个全部存放virtualenv目录的目录，例如D:/source/env<br>
+<code>WORKON_HOME</code>，这是一个全部存放virtualenv目录的目录，例如D:/source/env<br>
 然后可以使用virtualwrapper了，相关命令如下</p>
 <blockquote>
 <p>创建基本环境：mkvirtualenv [环境名]<br>
