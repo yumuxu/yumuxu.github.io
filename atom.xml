@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://yumuxu.github.io/</id>
     <title>Yumuxu</title>
-    <updated>2019-10-16T14:32:47.619Z</updated>
+    <updated>2019-11-22T15:52:38.213Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://yumuxu.github.io/"/>
     <link rel="self" href="https://yumuxu.github.io//atom.xml"/>
@@ -10,6 +10,15 @@
     <logo>https://yumuxu.github.io//images/avatar.png</logo>
     <icon>https://yumuxu.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, Yumuxu</rights>
+    <entry>
+        <title type="html"><![CDATA[秋游]]></title>
+        <id>https://yumuxu.github.io//post/qiu-you</id>
+        <link href="https://yumuxu.github.io//post/qiu-you">
+        </link>
+        <updated>2019-11-22T15:48:45.000Z</updated>
+        <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://yumuxu.github.io//post-images/1574437950940.jpg" alt=""></figure>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Django 学习笔记 Day01]]></title>
         <id>https://yumuxu.github.io//post/django-xue-xi-bi-ji-day01</id>
@@ -281,18 +290,6 @@ pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 <li>安装完成之后就<code>/usr/local/bin</code>下就会有pip3</li>
 <li>创建软连接到 <code>/usr/bin</code> 就可以在Terminal下正常使用<code>ln -s /usr/local/bin/pip3 /usr/bin/pip3</code></li>
 <li>参考<a href="http://stackoverflow.com/questions/11268501/how-to-use-pip-with-python-3-x-alongside-python-2-x">How to use pip with Python 3.x alongside Python 2.x</a></li>
-</ol>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Linux-Set-Date]]></title>
-        <id>https://yumuxu.github.io//post/linux-set-datemd</id>
-        <link href="https://yumuxu.github.io//post/linux-set-datemd">
-        </link>
-        <updated>2019-10-09T14:47:44.000Z</updated>
-        <content type="html"><![CDATA[<ol>
-<li><code>date -s &quot;2016-02-06 00:00:00&quot;</code></li>
-<li><code>hwclock --systohc</code></li>
 </ol>
 ]]></content>
     </entry>
